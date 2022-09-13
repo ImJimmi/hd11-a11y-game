@@ -10,8 +10,10 @@ public:
     Room1 (GameState& gameState)
         : m_state {gameState}
     {
-        m_door.setButtonText ("Door: Locked, look for a key!");
+        m_puzzleDescription.setText ("You are in a room filled with boxes with a locked door. The door looks like it needs a key to unlock. Maybe it's hidden somewhere in the room?", juce::dontSendNotification);
+        addAndMakeVisible (m_puzzleDescription);
 
+        m_door.setButtonText ("Door: Locked, look for a key!");
         m_door.onClick = [this] {
             if (m_state.getPlayerHasKey())
             {
@@ -23,11 +25,9 @@ public:
                 m_door.getAccessibilityHandler()->notifyAccessibilityEvent (juce::AccessibilityEvent::titleChanged);
             }
         };
-
         addAndMakeVisible (m_door);
 
         auto& rng = juce::Random::getSystemRandom();
-
         for (auto i = 0; i < 3; i++)
         {
             auto* container = m_containers.add (std::make_unique<Container> (rng.nextInt ({2, 5})));
@@ -47,6 +47,8 @@ public:
     void resized() override
     {
         auto bounds = getLocalBounds();
+        m_puzzleDescription.setBounds (bounds.removeFromTop(50));
+
         m_door.setBounds (bounds.removeFromTop (50).removeFromLeft (100));
 
         for (auto* const container : m_containers)
@@ -56,6 +58,7 @@ public:
     }
 
 private:
+    juce::Label m_puzzleDescription;
     juce::TextButton m_door;
     juce::OwnedArray<Container> m_containers;
 
