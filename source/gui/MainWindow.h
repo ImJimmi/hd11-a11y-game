@@ -29,7 +29,7 @@ public:
         addAndMakeVisible (m_label);
 
         gameState.addListener (*this);
-        gameState.setRoomNumber (3);
+        gameState.setRoomNumber (1);
     }
 
     ~MainWindow() override = default;
