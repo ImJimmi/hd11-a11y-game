@@ -14,6 +14,7 @@ target_sources(a11y-game
 PRIVATE
     source/Application.h
     source/main.cpp
+    source/MainWindow.h
 )
 
 target_compile_definitions(a11y-game
