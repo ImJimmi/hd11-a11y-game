@@ -12,11 +12,14 @@ juce_add_gui_app(a11y-game
 
 target_sources(a11y-game
 PRIVATE
+    source/gui/off-screen-components/OffScreenComboBox.h
+    source/gui/off-screen-components/OffScreenComponent.h
     source/gui/off-screen-components/OffScreenLabel.h
     source/gui/off-screen-components/OffScreenTextButton.h
     source/gui/Application.h
     source/gui/MainWindow.h
     source/gui/Room1.h
+    source/gui/Room2.h
     source/model/GameState.h
     source/main.cpp
 )

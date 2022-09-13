@@ -10,6 +10,12 @@ public:
         addAndMakeVisible (innerComponent);
     }
 
+    OffScreenLabel (const juce::String& text)
+        : OffScreenLabel {}
+    {
+        innerComponent.setText (text, juce::sendNotification);
+    }
+
     void resized() override
     {
         innerComponent.setBounds (getLocalBounds());
