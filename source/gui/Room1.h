@@ -12,7 +12,7 @@ public:
     Room1 (GameState& gameState)
         : m_state {gameState}
     {
-        m_puzzleDescription.innerComponent.setText ("You are in Room One. It is filled with boxes with a locked door. The door looks like it needs a key to unlock. Maybe it's hidden somewhere in the room?", juce::dontSendNotification);
+        m_puzzleDescription.innerComponent.setText ("You wake up to find yourself in a room. It is filled with boxes with a locked door. The door looks like it needs a key to unlock. Maybe it's hidden somewhere in the room?", juce::dontSendNotification);
         addAndMakeVisible (m_puzzleDescription);
 
         m_door.innerComponent.setButtonText ("Door: Locked, look for a key!");

@@ -29,7 +29,7 @@ public:
         : m_state {gameState}
         , m_comboLockPassCode {generateRandomFourDigitPassCode()}
     {
-        m_puzzleDescription.innerComponent.setText ("You are in Room 2. There is a safe in front of you with a combination lock. Maybe the code is around here somewhere?", juce::dontSendNotification);
+        m_puzzleDescription.innerComponent.setText ("You leave the first room through the unlocked door. In the garage outside, there is a safe in with a combination lock. Maybe the code is around here somewhere?", juce::dontSendNotification);
         addAndMakeVisible (m_puzzleDescription);
 
         m_safe.innerComponent.setButtonText ("Safe: Locked.");

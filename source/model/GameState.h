@@ -22,6 +22,16 @@ public:
         m_playerHasKey = hasKey;
     }
 
+    bool getSlidingDoorIsOpen() const
+    {
+        return m_slidingDoorIsOpen;
+    }
+
+    void setSlidingDoorIsOpen (bool doorIsOpen)
+    {
+        m_slidingDoorIsOpen = doorIsOpen;
+    }
+
     void setRoomNumber (int roomNum)
     {
         m_roomNumber = roomNum;
@@ -38,6 +48,7 @@ public:
 
 private:
     bool m_playerHasKey = false;
+    bool m_slidingDoorIsOpen = false;
     int m_roomNumber {1};
 
     juce::ListenerList<Listener> m_listeners;
