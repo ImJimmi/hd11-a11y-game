@@ -2,12 +2,14 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 
+#include "off-screen-components/OffScreenTextButton.h"
+
 class Container : public juce::Component
 {
 public:
     explicit Container (int numItems)
     {
-        setTitle ("Container");
+        setTitle ("Box");
         setFocusContainerType (FocusContainerType::focusContainer);
 
         while (m_items.size() < numItems)
@@ -29,7 +31,7 @@ public:
         flexBox.performLayout (getLocalBounds());
     }
 
-    void add (std::unique_ptr<juce::TextButton> item)
+    void add (std::unique_ptr<OffScreenTextButton> item)
     {
         addAndMakeVisible (*item);
 
@@ -44,7 +46,7 @@ public:
     {
         for (auto i = m_items.size() - 1; i >= 0; i--)
         {
-            if (m_items[i]->getButtonText() == itemName)
+            if (m_items[i]->innerComponent.getButtonText() == itemName)
                 m_items.remove (i);
         }
 
@@ -52,7 +54,7 @@ public:
     }
 
 private:
-    static std::unique_ptr<juce::TextButton> createRandomItem()
+    static std::unique_ptr<OffScreenTextButton> createRandomItem()
     {
         static const std::vector<juce::String> possibleItems {
             "Bell",
@@ -80,13 +82,30 @@ private:
         auto& rng = juce::Random::getSystemRandom();
         const auto itemIndex = rng.nextInt (std::size (possibleItems));
 
-        return std::make_unique<juce::TextButton> (possibleItems[itemIndex]);
+        return std::make_unique<OffScreenTextButton> (possibleItems[itemIndex]);
     };
 
-    std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() final
+    class ContainerAccessibilityHandler : public juce::AccessibilityHandler
     {
-        return std::make_unique<juce::AccessibilityHandler> (*this, juce::AccessibilityRole::group);
+    public:
+        explicit ContainerAccessibilityHandler (juce::Component& component)
+                : juce::AccessibilityHandler {component,
+                                              juce::AccessibilityRole::group}
+        {
+        }
+
+        juce::AccessibleState getCurrentState() const override
+        {
+            return juce::AccessibilityHandler::getCurrentState().withAccessibleOffscreen();
+        }
+
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ContainerAccessibilityHandler)
+    };
+
+    std::unique_ptr<juce::AccessibilityHandler> createAccessibilityHandler() override
+    {
+        return std::make_unique<ContainerAccessibilityHandler> (*this);
     }
 
-    juce::OwnedArray<juce::TextButton> m_items;
+    juce::OwnedArray<OffScreenTextButton> m_items;
 };

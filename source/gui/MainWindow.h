@@ -18,6 +18,7 @@ public:
 
     void resized() override
     {
+//        m_room1.setBounds (getLocalBounds().translated (10000000, 0));
         m_room1.setBounds (getLocalBounds());
     }
 
