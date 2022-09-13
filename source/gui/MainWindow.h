@@ -21,6 +21,12 @@ public:
         addChildComponent (m_room2);
         addChildComponent (m_room3);
 
+        m_label.setText ("This game has no on screen visuals. Use your favourite screenreader to play!",
+                         juce::dontSendNotification);
+        m_label.setJustificationType (juce::Justification::centred);
+        m_label.setAccessible (false;)
+        addAndMakeVisible (m_label);
+
         gameState.addListener (*this);
         gameState.setRoomNumber (3);
     }
@@ -29,6 +35,8 @@ public:
 
     void resized() override
     {
+        m_label.setBounds (getLocalBounds());
+
         m_room1.setBounds (getLocalBounds().translated (10000000, 0));
         m_room2.setBounds (getLocalBounds().translated (10000000, 0));
         m_room3.setBounds (getLocalBounds().translated (10000000, 0));
