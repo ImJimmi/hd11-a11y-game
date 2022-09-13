@@ -1,0 +1,106 @@
+# This is a work-in-progress clang-format style configuration for Focusrite Software.
+# It is based on the JUCE coding standard (https://juce.com/discover/stories/coding-standards)
+# See https://clang.llvm.org/docs/ClangFormatStyleOptions.html for an overview of style options, with examples.
+
+# Global Settings
+---
+# General
+DisableFormat: 'false'                                                                        
+ColumnLimit: '0'                                        # Do not enforce a strict column limit
+SortIncludes: 'false'                                   
+ExperimentalAutoDetectBinPacking: 'false'               
+
+# Alignment
+AlignAfterOpenBracket: Align                            # Horizontally aligns arguments after an open bracket.
+AlignConsecutiveAssignments: 'false'                    
+AlignConsecutiveDeclarations: 'false'                   
+AlignEscapedNewlinesLeft: 'false'                       
+AlignOperands: 'true'                                   
+AlignTrailingComments: 'true'                           
+ReflowComments: 'false'                                 
+IndentPPDirectives: AfterHash
+
+# Indentation
+AccessModifierOffset: '-4'                              # Indentation of access modifiers, e.g. public:
+ConstructorInitializerIndentWidth: '4'                  # Indentation of constructor initializer or inheritance lists.
+ContinuationIndentWidth: '4'                             
+IndentCaseLabels: 'true'                                # i.e. in switch statement
+IndentWidth: '4'                                         
+IndentWrappedFunctionNames: 'true'                       
+NamespaceIndentation: All                                
+TabWidth: '4'                                            
+UseTab: Never                                           # Never ever
+
+# Line breaks
+AllowAllParametersOfDeclarationOnNextLine: 'false'       
+AllowShortBlocksOnASingleLine: 'false'                   
+AllowShortCaseLabelsOnASingleLine: 'false'               
+AllowShortFunctionsOnASingleLine: All                    
+AllowShortIfStatementsOnASingleLine: 'false'             
+AllowShortLoopsOnASingleLine: 'false'                    
+AlwaysBreakAfterDefinitionReturnType: None               
+AlwaysBreakAfterReturnType: None                         
+AlwaysBreakBeforeMultilineStrings: 'false'               
+AlwaysBreakTemplateDeclarations: 'true'                  
+BinPackArguments: 'false'                               # Function call’s args either all on the same line or will have one line each.
+BinPackParameters: 'false'                              # Same as BinPackArguments but with function declaration
+BreakAfterJavaFieldAnnotations: 'false'                  
+BreakBeforeBinaryOperators: NonAssignment                
+BreakBeforeBraces: Custom
+BraceWrapping:
+    AfterCaseLabel:  true
+    AfterClass:      true
+    AfterControlStatement: Always
+    AfterEnum:       true
+    AfterFunction:   true
+    AfterNamespace:  true
+    AfterObjCDeclaration: true
+    AfterStruct:     true
+    AfterUnion:      true
+    AfterExternBlock: true
+    BeforeCatch:     true
+    BeforeElse:      true
+    BeforeLambdaBody: false
+    BeforeWhile:     false
+    IndentBraces:    false
+    SplitEmptyFunction: true
+    SplitEmptyRecord: true
+    SplitEmptyNamespace: true                               
+BreakBeforeTernaryOperators: 'true'                      
+BreakConstructorInitializersBeforeComma: 'true'          
+BreakInheritanceList: 'BeforeComma'                      
+BreakStringLiterals: 'false'                             
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'   
+KeepEmptyLinesAtTheStartOfBlocks: 'false'                
+MaxEmptyLinesToKeep: '1'                                 
+
+# Spaces
+DerivePointerAlignment: 'false'                         
+PointerAlignment: Left                                  # e.g. int* x;
+SpaceAfterCStyleCast: 'true'                            
+SpaceAfterLogicalNot: 'true'
+SpaceAfterTemplateKeyword: 'false'                            
+SpaceBeforeAssignmentOperators: 'true'                                     
+SpaceBeforeInheritanceColon: 'true'                     
+SpaceBeforeParens: NonEmptyParentheses                  
+SpaceInEmptyParentheses: 'false'                        
+SpacesInAngles: 'false'                                 
+SpacesInCStyleCastParentheses: 'false'                  
+SpacesInContainerLiterals: 'false'                      
+SpacesInParentheses: 'false'                            
+SpacesInSquareBrackets: 'false'                            
+
+#Language Specific Settings
+
+#Cpp
+---
+Language: Cpp                                       
+Standard: Cpp11   
+Cpp11BracedListStyle: 'true'                            # e.g. {1, 2, 3} rather than { 1, 2, 3 }
+SpaceBeforeCpp11BracedList: 'true'
+
+#ObjC
+---
+Language: ObjC                                       
+ObjCSpaceAfterProperty: true
+ObjCSpaceBeforeProtocolList: false
