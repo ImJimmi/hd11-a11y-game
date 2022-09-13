@@ -10,6 +10,11 @@ public:
         return m_playerHasKey;
     }
 
+    void setPlayerHasKey (bool hasKey)
+    {
+        m_playerHasKey = hasKey;
+    }
+
 private:
     bool m_playerHasKey = false;
 };
