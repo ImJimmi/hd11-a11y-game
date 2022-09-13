@@ -21,15 +21,16 @@ public:
         addChildComponent (m_room1);
         addChildComponent (m_room2);
         addChildComponent (m_room3);
+        addChildComponent (m_room4);
 
         m_label.setText ("This game has no on screen visuals. Use your favourite screenreader to play!",
                          juce::dontSendNotification);
         m_label.setJustificationType (juce::Justification::centred);
-        m_label.setAccessible (false;)
+        m_label.setAccessible (false);
         addAndMakeVisible (m_label);
 
         gameState.addListener (*this);
-        gameState.setRoomNumber (1);
+        gameState.setRoomNumber (3);
     }
 
     ~MainWindow() override = default;
@@ -41,6 +42,7 @@ public:
         m_room1.setBounds (getLocalBounds().translated (10000000, 0));
         m_room2.setBounds (getLocalBounds().translated (10000000, 0));
         m_room3.setBounds (getLocalBounds().translated (10000000, 0));
+        m_room4.setBounds (getLocalBounds().translated (10000000, 0));
     }
 
 private:
@@ -49,11 +51,13 @@ private:
         m_room1.setVisible (newRoomNum == 1);
         m_room2.setVisible (newRoomNum == 2);
         m_room3.setVisible (newRoomNum == 3);
+        m_room4.setVisible (newRoomNum == 4);
     }
 
     Room1 m_room1;
     Room2 m_room2;
     Room3 m_room3;
+    Room4 m_room4;
 
     juce::Label m_label;
 

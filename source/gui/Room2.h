@@ -102,7 +102,7 @@ public:
 
     void resized() override
     {
-        auto bounds = getLocalBounds();
+        auto bounds = juce::Rectangle<int> {100000, 0, 10000, 10000};
         m_puzzleDescription.setBounds (bounds.removeFromTop (50));
 
         m_safe.setBounds (bounds.removeFromTop (50).removeFromLeft (100));
