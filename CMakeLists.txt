@@ -22,6 +22,7 @@ PRIVATE
     source/gui/Room1.h
     source/gui/Room2.h
     source/gui/Room3.h
+    source/gui/Room4.h
     source/model/GameState.h
     source/main.cpp
 )

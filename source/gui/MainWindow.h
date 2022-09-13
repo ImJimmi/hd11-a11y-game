@@ -4,6 +4,7 @@
 #include "Room1.h"
 #include "Room2.h"
 #include "Room3.h"
+#include "Room4.h"
 
 class MainWindow
     : public juce::Component
