@@ -14,6 +14,7 @@ target_sources(a11y-game
 PRIVATE
     source/gui/Application.h
     source/gui/MainWindow.h
+    source/gui/Room1.h
     source/model/GameState.h
     source/main.cpp
 )
