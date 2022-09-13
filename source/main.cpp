@@ -1,7 +1,3 @@
-#include <iostream>
+#include "Application.h"
 
-int main()
-{
-    std::cout << "HW" << std::endl;
-    return 0;
-}
+START_JUCE_APPLICATION (Application)
