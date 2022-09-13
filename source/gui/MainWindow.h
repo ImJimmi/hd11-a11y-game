@@ -1,9 +1,11 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 
+#include <model/GameState.h>
+
 class MainWindow : public juce::Component
 {
 public:
-    explicit MainWindow ()
+    explicit MainWindow (GameState& gameState)
     {
         setSize (1280, 720);
     }
@@ -11,10 +13,7 @@ public:
     ~MainWindow() override = default;
 
 private:
-    // juce::Component
-    //======================================================================
 
-    //======================================================================
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
 };

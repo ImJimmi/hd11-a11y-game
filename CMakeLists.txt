@@ -12,9 +12,10 @@ juce_add_gui_app(a11y-game
 
 target_sources(a11y-game
 PRIVATE
-    source/Application.h
+    source/gui/Application.h
+    source/gui/MainWindow.h
+    source/model/GameState.h
     source/main.cpp
-    source/MainWindow.h
 )
 
 target_compile_definitions(a11y-game

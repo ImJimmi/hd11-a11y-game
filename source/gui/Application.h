@@ -3,6 +3,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 
 #include "MainWindow.h"
+#include "model/GameState.h"
 
 class Application : public juce::JUCEApplication
 {
@@ -12,13 +13,13 @@ public:
     class ApplicationWindow : public juce::DocumentWindow
     {
     public:
-        explicit ApplicationWindow (const juce::String& name)
+        explicit ApplicationWindow (const juce::String& name, GameState& gameState)
                 : DocumentWindow {name,
                                   juce::Colours::black,
                                   TitleBarButtons::allButtons - TitleBarButtons::maximiseButton}
         {
             setUsingNativeTitleBar (true);
-            setContentOwned (new MainWindow {}, true);
+            setContentOwned (new MainWindow {gameState}, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
         }
@@ -51,7 +52,7 @@ public:
 
     void initialise (const juce::String&) final
     {
-        m_application = std::make_unique<ApplicationWindow>("A11y Game");
+        m_application = std::make_unique<ApplicationWindow>("A11y Game", m_state);
     }
 
     void shutdown() final
@@ -61,6 +62,8 @@ public:
 
 private:
     std::unique_ptr<ApplicationWindow> m_application;
+
+    GameState m_state;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Application)
 };
